@@ -23,10 +23,8 @@ app.use(
       const allowedOrigins = [
         frontendUrl,
         "http://localhost:3000",
-        "http://localhost:4444",
-        "http://localhost:7001",
         "http://127.0.0.1:3000",
-        "https://cleaner-rooster.vercel.app" // Production frontend domain
+        "https://cleaner-roster-frontend.manishmh982.workers.dev" // Production frontend domain
       ];
       
       // Allow requests without origin (like Postman, curl, etc.)

@@ -1,0 +1,50 @@
+name = "cleaner-rooster-backend"
+main = "src/index.ts"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+account_id = "1960a1d3a58dd9fc65759f1e3f37865e"
+
+[build]
+command = "npm run typecheck"
+
+# D1 Database (shared across environments)
+[[d1_databases]]
+binding = "DB"
+database_name = "cleaner-rooster-db"
+database_id = "2b829a79-8150-4017-808a-14754f65f1c9"
+migrations_dir = "drizzle/migrations"
+
+# KV Cache (shared across environments)
+[[kv_namespaces]]
+binding = "USER_PROFILE"
+preview_id = "b71c2067bd1c45a790a94fe20e3c97d4"
+id = "ddc9a6bfccbb4804b0631a493a365958"
+
+# Default variables (development)
+[vars]
+ENVIRONMENT = "development"
+FRONTEND_URL = "http://localhost:3000"
+JWT_SECRET = "your-super-secret-jwt-key-for-development-only-change-in-production"
+JWT_REFRESH_SECRET = "your-super-secret-refresh-jwt-key-for-development-only-change-in-production"
+
+# Production overrides (only what's different)
+[env.production]
+name="cleaner-rooster-backend-production"
+
+[[env.production.kv_namespaces]]
+binding = "USER_PROFILE"
+preview_id = "b71c2067bd1c45a790a94fe20e3c97d4"
+id = "ddc9a6bfccbb4804b0631a493a365958"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+FRONTEND_URL = "https://cleaner-roster-frontend.manishmh982.workers.dev"
+JWT_SECRET = "77f2a09486203b79d48786652ce207d45108f36ae736ca9026ee3b28629aae84"
+JWT_REFRESH_SECRET = "22df1d6940e1617ae9f8f5552a0df66f42641a0add399f11fd3be7b2ffe22dbd"
+
+# Production D1 Database
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "cleaner-roster-prod-d1"
+database_id = "7cdc2384-df6c-4b35-92d8-6609dfcb644e"
+migrations_dir = "drizzle/migrations"

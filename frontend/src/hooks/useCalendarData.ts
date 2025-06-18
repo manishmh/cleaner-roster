@@ -252,7 +252,13 @@ export function useCalendarData(): UseCalendarDataReturn {
       }
     } catch (err) {
       console.error('Error loading date range:', err);
-      setError(err instanceof Error ? err.message : 'Failed to load shifts for date range');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load shifts for date range';
+      setError(errorMessage);
+      
+      // If it's a server error, don't retry automatically
+      if (errorMessage.includes('500') || errorMessage.includes('Internal Server Error')) {
+        console.warn('Server error detected, stopping automatic retries');
+      }
     } finally {
       setLoading(false); // Clear loading state
       loadingRanges.current.delete(cacheKey);

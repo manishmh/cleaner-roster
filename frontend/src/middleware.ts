@@ -1,9 +1,9 @@
 import { auth } from "@/server/auth";
 import {
-  DEFAULT_LOGIN_REDIRECT_URL,
-  apiAuthPrefix,
-  authRoutes,
-  publicRoutes,
+    DEFAULT_LOGIN_REDIRECT_URL,
+    apiAuthPrefix,
+    authRoutes,
+    publicRoutes,
 } from "@/server/routes";
 
 export default auth((req) => {

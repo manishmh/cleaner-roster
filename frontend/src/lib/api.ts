@@ -1,12 +1,7 @@
 import { z } from "zod";
 
-const URL_MAP = {
-  development: 'http://localhost:8787',
-  staging: 'https://cleaner-rooster-backend.manishmh982.workers.dev',
-  production: 'https://cleaner-rooster-backend-production.dasdev-pratik.workers.dev/',
-}
-
-const API_BASE_URL = URL_MAP[process.env.NEXT_PUBLIC_ENVIRONMENT as keyof typeof URL_MAP] || 'http://localhost:8787';
+// API Configuration for Vercel deployment
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8787';
 
 // Zod schemas for validation
 export const LoginSchema = z.object({
