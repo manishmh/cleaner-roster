@@ -1,0 +1,42 @@
+{
+  "name": "cleaner-rooster-backend",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers backend using Hono, D1, Drizzle ORM, and KV caching",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:production": "wrangler deploy --env production",
+    "db:generate": "drizzle-kit generate",
+    "db:push:local": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate:local": "wrangler d1 migrations apply cleaner-rooster-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply cleaner-rooster-db",
+    "db:migrate:production": "wrangler d1 migrations apply cleaner-rooster-db --env production",
+    "kv:create:preview": "wrangler kv:namespace create CACHE --preview",
+    "kv:create:production": "wrangler kv:namespace create CACHE",
+    "kv:list": "wrangler kv:key list --binding CACHE",
+    "kv:clear": "wrangler kv:key delete --all --binding CACHE",
+    "typecheck": "tsc --noEmit",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.0",
+    "drizzle-zod": "^0.8.1",
+    "hono": "^4.6.12",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.15.29",
+    "better-sqlite3": "^11.7.0",
+    "drizzle-kit": "^0.31.1",
+    "typescript": "^5.7.2",
+    "wrangler": "^4.18.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `staff` RENAME COLUMN "mobile" TO "phone";

@@ -1,0 +1,22 @@
+CREATE TABLE `cleaner_roster` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`client_link` text NOT NULL,
+	`booking_date` text NOT NULL,
+	`booking_time` text NOT NULL,
+	`scheduled_time` text NOT NULL,
+	`logged_time` text,
+	`in_time` text,
+	`out_time` text,
+	`location_address` text NOT NULL,
+	`location_google_map_link` text,
+	`start_location_address` text,
+	`start_location_google_map_link` text,
+	`end_location_address` text,
+	`end_location_google_map_link` text,
+	`shift_instructions` text,
+	`supervisor_questions` text DEFAULT '[]' NOT NULL,
+	`mobile_message` text,
+	`status` text DEFAULT 'Pending' NOT NULL,
+	`created_at` integer NOT NULL,
+	`updated_at` integer NOT NULL
+);

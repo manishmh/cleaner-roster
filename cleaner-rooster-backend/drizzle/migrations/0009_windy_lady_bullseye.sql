@@ -1,0 +1,1 @@
+ALTER TABLE `staff` ADD `access` text DEFAULT '[]' NOT NULL;

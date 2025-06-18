@@ -1,0 +1,1 @@
+ALTER TABLE `shift_messages` ADD `staff_created_by` integer REFERENCES staff(id);
