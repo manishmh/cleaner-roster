@@ -112,10 +112,25 @@ public
 
 # Cloudflare
 .wrangler/
+wrangler.toml.backup
+*.wrangler-lock
+
+# Development and local files
+*.local.toml
 
 # Database files
 *.db
 *.sqlite
+drizzle/dev.db
+database.db
+db.sqlite
+
+# Seed and test data files
+*seed*.js
+seed-*.js
+comprehensive-seed.js
+cleanup-*.js
+test-*.html
 
 # Editor directories and files
 .vscode/
